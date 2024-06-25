@@ -94,7 +94,7 @@ class JournalListActivity : AppCompatActivity() {
                 for (documentSnapshot in queryDocumentSnapshots) {
                     // Convert each document to a Journal object
                     val journal = documentSnapshot.toObject(Journal::class.java)
-                    journalList.add(journal)
+                    journalList.add(0,journal)
                 }
 
                 // Initialize adapter and set it to RecyclerView
@@ -104,6 +104,7 @@ class JournalListActivity : AppCompatActivity() {
                 }
 
                 recyclerView.adapter = myAdapter // Set adapter to RecyclerView
+                myAdapter.notifyDataSetChanged()
 
             }
             .addOnFailureListener { e ->
